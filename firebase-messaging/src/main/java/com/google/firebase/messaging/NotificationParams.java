@@ -374,14 +374,14 @@ public class NotificationParams {
     return null;
   }
 
-  public String getPossiblyLocalizedString(Resources resources, String packageName, String key) {
-    String unlocalized = getString(key);
-    if (!TextUtils.isEmpty(unlocalized)) {
-      return unlocalized;
+public String getPossiblyLocalizedString(Resources resources, String packageName, String key) {
+    String localized = getLocalizedString(resources, packageName, key);
+    if (!TextUtils.isEmpty(localized)) {
+      return localized;
     }
 
-    return getLocalizedString(resources, packageName, key);
-  }
+    return getString(key);
+}
 
   public boolean hasImage() {
     return !TextUtils.isEmpty(getString(MessageNotificationKeys.IMAGE_URL));
